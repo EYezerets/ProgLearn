@@ -112,6 +112,20 @@ class TreeClassificationTransformer(BaseTransformer):
         # define the ensemble
         self.transformer = DecisionTreeClassifier(**self.kwargs, random_state = 42).fit(X, y)
 
+        n_nodes = self.transformer.tree_.node_count
+        children_left = self.transformer.tree_.children_left
+        children_right = self.transformer.tree_.children_right
+        feature = self.transformer.tree_.feature
+        threshold = self.transformer.tree_.threshold
+
+        print("in UF2 DecisionTree")
+
+        print("n_nodes = {}".format(n_nodes))
+        print("children_left = {}".format(children_left))
+        print("children_right = {}".format(children_right))
+        print("feature = {}".format(feature))
+        print("threshold = {}".format(threshold))
+
         self._is_fitted = True
 
         return self
