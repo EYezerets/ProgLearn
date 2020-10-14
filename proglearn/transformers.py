@@ -110,7 +110,7 @@ class TreeClassificationTransformer(BaseTransformer):
         X, y = check_X_y(X, y, multi_output=multi_output)
 
         # define the ensemble
-        self.transformer = DecisionTreeClassifier(**self.kwargs).fit(X, y)
+        self.transformer = DecisionTreeClassifier(**self.kwargs, random_state = 42).fit(X, y)
 
         self._is_fitted = True
 
